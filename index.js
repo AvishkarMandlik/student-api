@@ -36,6 +36,14 @@ app.post('/create-student', async(req,res)=>{
     })
 })
 
+app.get('/all-students', async(req,res)=>{
+    const students = await Student.find()
+    res.send({
+        success : true,
+        data : students
+    })
+})
+
 app.listen(5000, ()=>{
     console.log('Server started running on port 5000')
 })
