@@ -57,6 +57,17 @@ app.post('/find-by-roll', async(req, res)=>{
 
 })
 
+app.post('/deleteone-by-roll', async(req,res)=>{
+    const {roll} = req.body;
+    const students = await Student.deleteOne({
+        roll : roll
+    })
+    res.json({
+        success : true,
+        data : students
+    })
+})
+
 app.listen(5000, ()=>{
     console.log('Server started running on port 5000')
 })
