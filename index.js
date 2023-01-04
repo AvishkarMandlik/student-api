@@ -64,7 +64,25 @@ app.post('/deleteone-by-roll', async(req,res)=>{
     })
     res.json({
         success : true,
-        data : students
+        data : students,
+        message : "Student deleted succesfully"
+    })
+})
+
+app.post('/update-student', async(req,res)=>{
+    const {roll,fullName,mobile} =req.body;
+
+    const result = await Student.updateOne({
+        roll:roll
+    },
+    {
+        fullName : fullName,
+        mobile : mobile
+    })
+
+    res.send({
+        success : true,
+        messsage : "Student updated successfully"
     })
 })
 
